@@ -37,7 +37,6 @@ const modelDefiners = [
 for(const modelDefiner of modelDefiners){
     modelDefiner(sequelize);
 }
-
 //Construir las relaciones
 applyRelations(sequelize);
 

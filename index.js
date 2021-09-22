@@ -3,3 +3,13 @@ const express = require('express');
 
 //Traer la conexión de la base de datos
 const sequelize = require('./util/database');
+
+const app = express();
+//Inicializar servidor
+const puerto=8080;
+sequelize.sync(/*{force: true}*/ )
+    .then(resultado=>{
+        console.log('Conexión exitosa');
+        //Lanza el servidor para escuchar peticiones
+        app.listen(puerto,()=>console.log("Servidor en línea en el puerto 8080"));    })
+    .catch(error=>console.log(error));

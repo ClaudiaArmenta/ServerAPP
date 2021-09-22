@@ -25,5 +25,4 @@ const sequelize = require('../util/database');
             },
         });
  }
- 
- module.exports = Organization;
+module.exports = Organization;
