@@ -37,10 +37,15 @@ const UserData= (sequelize)=>{
                 type: Sequelize.INTEGER,
                 allowNull: false
             },
-            nivel:{
+            levell:{
                 type: Sequelize.INTEGER,
                 allowNull: false
-            }
-        });
+            },
+            confirmacionCorreo :{
+                type: Sequelize.BOOLEAN,
+                allowNull: false,
+                defaultValue: false
+            },
+            });
 }
     module.exports = UserData;

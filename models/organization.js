@@ -23,6 +23,11 @@ const sequelize = require('../util/database');
                 type: Sequelize.STRING,
                 allowNull: false
             },
+            confirmacionCorreo :{
+                type: Sequelize.BOOLEAN,
+                allowNull: false,
+                defaultValue: false
+            },
         });
  }
 module.exports = Organization;
