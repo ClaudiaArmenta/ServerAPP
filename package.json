@@ -1,0 +1,28 @@
+{
+  "name": "serverapp",
+  "version": "1.0.0",
+  "description": "servidor de la aplicacion",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SarahiArmenta/ServerAPP.git"
+  },
+  "keywords": [
+    "servidor",
+    "NodeJs"
+  ],
+  "author": "Sara",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SarahiArmenta/ServerAPP/issues"
+  },
+  "homepage": "https://github.com/SarahiArmenta/ServerAPP#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "sequelize": "^6.6.5",
+    "tedious": "^12.2.0"
+  }
+}
