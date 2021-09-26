@@ -1,3 +1,9 @@
+//Biblioteca para definir lo que es un JSON
+const bodyParser = require("body-parser");
+
+//Biblioteca para generar las rutas de acuerdo al sistema operativo
+const path = require("path");
+
 //Importar la biblioteca express para la creación de servidores
 const express = require('express');
 
@@ -6,8 +12,18 @@ const sequelize = require('./util/database');
 
 //Crear el servidor
 const app = express();
+
+//Middleware para configura la definicion de un JSON
+app.use(bodyParser.json());
+//Middleware para configurar la recepción de formularios
+app.use(bodyParser.urlencoded({extended:true}))
+
 const usuarioRoutes = require('./routes/user');
+
+app.use(express.json())
 app.use('/user',usuarioRoutes);
+
+
 
 
 //Inicializar servidor

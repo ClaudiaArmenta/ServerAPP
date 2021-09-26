@@ -2,6 +2,8 @@
 const express = require("express");
 const user = require('../models/user');
 const userController = require('../controllers/user');
+const userDataController = require('../controllers/userdata');
+const userDonations = require('../controllers/donation');
 /*const encuestaController = require('../controllers/encuesta');
 const usuarioNivelController = require('../controllers/usuarioNivel');
 const nivelController = require('../controllers/nivel');*/
@@ -19,7 +21,9 @@ router.get('/error',usuarioController.getError);*/
 
 //Obtener los datos del formulario
 //router.post('/UsuarioTermino',usuarioController.postUsuarioTermino);
-router.post('/agregarUsuario',userController.postAgregarUsuario);
+//router.post('/agregarUsuario',userController.postAgregarUsuario);
+router.get('/agregarUsuario',userController.getAgregarUsuario);
+router.post('/agregarUsuarioData',userDataController.postAgregarUsuarioData);
 /*router.post('/agregarEncuesta',encuestaController.postAgregarEncuesta);
 router.post('/agregarNivel',nivelController.postAgregarNivel);
 router.post('/agregarUsuarioNivel',usuarioNivelController.postAgregarUsuarioNivel);*/
@@ -30,7 +34,7 @@ router.post('/agregarUsuarioNivel',usuarioNivelController.postAgregarUsuarioNive
 //router.get('/confirmacion',usuarioController.getConfirmacion);
 
 //Mostrar los registros de la base de datos
-//router.get('/registros',usuarioController.getRegistros);
+router.get('/registros',userDonations.getDonations);
 
 //Mostrar un solo registro
 //router.get('/registro/:usuario',usuarioController.getRegistro);
@@ -38,7 +42,7 @@ router.post('/agregarUsuarioNivel',usuarioNivelController.postAgregarUsuarioNive
 
 /*INTERACCIÓN CON VIDEOJUEGO*/
 //Obtener los datos del formulario
-/*router.post('/iniciarSesion',usuarioController.postIniciarSesion);
-router.post('/iniciarSesionPagina',usuarioController.postIniciarSesionPagina);*/
+router.post('/iniciarSesion',userController.postIniciarSesion);
+/*router.post('/iniciarSesionPagina',usuarioController.postIniciarSesionPagina);*/
 
 module.exports =router;

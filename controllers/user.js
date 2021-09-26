@@ -29,28 +29,31 @@ exports.getError = (req,res)=>{
     res.sendFile(path.join(__dirname,'..','views','error.html'));
 }*/
 
-
-exports.postAgregarUsuario = (req,res)=>{
-    console.log(req.body);
+exports.getAgregarUsuario = (req,res)=>{    
     Usuario.create({
         registrationDate : "2002-12-10"
-    }).then(resultado=>console.log("Registro Usuario exitoso"))
+    }).then(resultado=>res.send(resultado))
       .catch(error=>console.log(error));
-    
-    UsuarioData.create({
-        email: "arihusecac@hotmail.com",//req.body.email,
-        name: "Ari",//req.body.name,
-        password: "12342",//req.body.password,
-        salt: "1234",//req.body.salt,
-        birthday: "2001-12/12",//req.body.birthday,
-        hasMonthlyDonation: false,//req.body.hasMonthlyDonation,
-        totalDonation: 1000,//req.body.totalDonation,
-        levell: 1,//req.body.levell,
-        confirmacionCorreo: false,//req.body.confirmacionCorreo
-        UserIdUser: 10
-    }).then(resultado=>console.log("Registro UserData exitoso"))
-      .catch(error=>console.log(error));
-    //res.redirect("/usuario/confirmacion");
+};
+
+exports.postIniciarSesion = (req,res)=>{
+    console.log(req.body);
+    Usuario.findByPk(req.body.email)
+    .then(resultado=>{
+        if(resultado){
+            if(req.body.password == resultado.password){
+                res.send("osiosi");
+            }else{
+                res.send("incorrecto");
+            }
+        }else{
+            res.send("no existe el usuario");
+        }        
+    })
+    .catch(error=>{
+        console.log(error);
+        res.send(error);
+    })
 };
 
 /*exports.getConfirmacion = (req,res)=>{
@@ -81,26 +84,6 @@ exports.postAgregarUsuario = (req,res)=>{
 /*exports.getHomeSteam = (req,res)=>{
     res.sendFile(path.join(__dirname,'..','views','homeSteam.html')); 
 }*/
-
-/*exports.postIniciarSesion = (req,res)=>{
-    console.log(req.body);
-    Usuario.findByPk(req.body.nombreUsuario)
-    .then(resultado=>{
-        if(resultado){
-            if(req.body.contraseñaUsuario == resultado.contraseña){
-                res.send("osiosi");
-            }else{
-                res.send("incorrecto");
-            }
-        }else{
-            res.send("no existe el usuario");
-        }        
-    })
-    .catch(error=>{
-        console.log(error);
-        res.send(error);
-    })
-};*/
 
 
 /*exports.postIniciarSesionPagina = (req,res)=>{
