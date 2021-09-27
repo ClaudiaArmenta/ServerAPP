@@ -12,9 +12,9 @@ const transporter = nodemailer.createTransport({
 });
 
 const mailOptions = {
-  from: 'youremail@gmail.com',
-  to: 'myfriend@yahoo.com',
-  subject: 'Sending Email using Node.js',
+  from: cuenta_correo,
+  to: correo_destino,
+  subject: 'Confirmación de donación.',
   html: '<h1>Su donación fue completada con éxito.<h1><p>Gracias por su donación.<p>'
 };
 
