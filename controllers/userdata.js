@@ -5,10 +5,9 @@ const UserData = sequelize.models.UserData;
 const path = require('path');
 const { RequestError } = require('tedious');
 
-
 exports.postAgregarUsuarioData = (req,res)=>{    
     console.log(req.body);
-    /*UserData.create({
+    UserData.create({
         email: req.body.email,
         name: req.body.name,
         password: req.body.password,
@@ -20,9 +19,26 @@ exports.postAgregarUsuarioData = (req,res)=>{
         confirmacionCorreo: req.body.confirmacionCorreo,
         UserIdUser: req.body.UserIdUser
     }).then(resultado=>console.log("Registro UserData exitoso"))
-      .catch(error=>console.log(error));*/
-
+      .catch(error=>console.log(error));
     res.json({ username: 'UwU' })
-
     //res.send("UwU");
+};
+
+
+exports.postVerificaUsuario = (req,res)=>{    
+  console.log(req.body);
+  UserData.findByPk(req.body.email)
+  .then(resultado=>{
+      if(resultado){
+        res.json({ username: 'NO' });  
+      }else{
+        res.json({ username: 'SI' });
+      }        
+  })
+  .catch(error=>{
+      console.log(error);
+      res.send(error);
+  })
+
+  //res.send("UwU");
 };

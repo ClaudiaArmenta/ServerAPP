@@ -24,6 +24,7 @@ router.get('/error',usuarioController.getError);*/
 //router.post('/agregarUsuario',userController.postAgregarUsuario);
 router.get('/agregarUsuario',userController.getAgregarUsuario);
 router.post('/agregarUsuarioData',userDataController.postAgregarUsuarioData);
+router.post('/verificaUsuario',userDataController.postVerificaUsuario);
 /*router.post('/agregarEncuesta',encuestaController.postAgregarEncuesta);
 router.post('/agregarNivel',nivelController.postAgregarNivel);
 router.post('/agregarUsuarioNivel',usuarioNivelController.postAgregarUsuarioNivel);*/
