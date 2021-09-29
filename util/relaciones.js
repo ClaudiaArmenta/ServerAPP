@@ -11,5 +11,8 @@ function applyRelations(sequelize){
     //Relacion 1:N 
     
     MonthlyDonation.belongsTo(User);
+    Project.hasMany(User);
+    Organization.hasMany(Project);
+    Donation.hasMany(User);
 }
 module.exports ={applyRelations};

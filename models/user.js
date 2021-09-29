@@ -3,9 +3,9 @@ const Sequelize = require('sequelize');
 const sequelize = require('../util/database');
 
 //crea tabla UserData
-const UserData= (sequelize)=>{
+const User= (sequelize)=>{
 
-    sequelize.define('UserData',{
+    sequelize.define('User',{
         //Atributos
             email :{
                 type: Sequelize.STRING,
@@ -53,4 +53,4 @@ const UserData= (sequelize)=>{
             }
         });
 }
-    module.exports = UserData;
+    module.exports = User;

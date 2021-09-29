@@ -27,7 +27,7 @@ const sequelize = require('../util/database');
                 type: Sequelize.INTEGER,
                 allowNull: false,
                 defaultValue: false
-            },
+            }
         });
  }
 module.exports = Organization;
