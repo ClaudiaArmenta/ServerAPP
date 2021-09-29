@@ -9,8 +9,7 @@ function applyRelations(sequelize){
     const UserData = sequelize.models.UserData;
 
     //Relacion 1:N 
-    User.hasMany(Donation);
-    UserData.belongsTo(User);
+    UserData.hasMany(Donation);
     MonthlyDonation.belongsTo(UserData);
 }
 module.exports ={applyRelations};
