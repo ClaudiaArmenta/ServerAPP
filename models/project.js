@@ -1,35 +1,33 @@
+
 //Utilizar la bibliotec Sequelize
 const Sequelize = require('sequelize');
 const sequelize = require('../util/database');
 
-//crea tabla Donation
-const Donation=(sequelize)=>{
-
-    sequelize.define('Donation',{
+const Project = (sequelize)=>{
+    sequelize.define('Project',{
         //Atributos
-            idDonation :{
+            idProject :{
                 type: Sequelize.INTEGER,
                 autoIncrement: true,
                 primaryKey: true,
                 allowNull: false
             },
-            quantity :{
-                type: Sequelize.INTEGER,
+            ProjectName :{
+                type: Sequelize.STRING,
                 allowNull: false
             },
-            donationDate :{
+            description :{
+                type: Sequelize.STRING,
+                allowNull: false
+            },
+            RegistrationDate :{
                 type: Sequelize.DATEONLY,
                 allowNull: true
             },
-            taxDeducibe :{
+            approbed :{
                 type: Sequelize.BOOLEAN,
-                allowNull: false,
                 defaultValue: false
-            },
-            idEmail:{
-                type: Sequelize.STRING,
-                allowNull: false,
-            },          
-        });
-    }
-module.exports = Donation;
+            }
+    });
+}
+module.exports = Project; 

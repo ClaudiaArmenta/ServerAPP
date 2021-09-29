@@ -8,6 +8,7 @@ const MonthlyDonation = (sequelize)=>{
         //Atributos
             idMonthlyDonation :{
                 type: Sequelize.INTEGER,
+                autoIncrement: true,
                 primaryKey: true,
                 allowNull: false
             },
@@ -21,4 +22,4 @@ const MonthlyDonation = (sequelize)=>{
             }
         });
 }
-    module.exports = MonthlyDonation; 
+module.exports = MonthlyDonation; 

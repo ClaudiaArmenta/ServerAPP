@@ -23,8 +23,8 @@ const sequelize = require('../util/database');
                 type: Sequelize.STRING,
                 allowNull: false
             },
-            confirmacionCorreo :{
-                type: Sequelize.BOOLEAN,
+            phoneNumber :{
+                type: Sequelize.INTEGER,
                 allowNull: false,
                 defaultValue: false
             },

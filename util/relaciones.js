@@ -2,14 +2,14 @@
 function applyRelations(sequelize){
     console.log(sequelize.models);
 
-    const User = sequelize.models.User;
     const MonthlyDonation = sequelize.models.MonthlyDonation;
     const Donation = sequelize.models.Donation
     const Organization = sequelize.models.Organization;
-    const UserData = sequelize.models.UserData;
+    const User = sequelize.models.User;
+    const Project = sequelize.models.Project;
 
     //Relacion 1:N 
-    UserData.hasMany(Donation);
-    MonthlyDonation.belongsTo(UserData);
+    
+    MonthlyDonation.belongsTo(User);
 }
 module.exports ={applyRelations};
