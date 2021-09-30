@@ -29,12 +29,14 @@ const User= (sequelize)=>{
                 allowNull: false
             },
             dateOfBirth :{
-                type: Sequelize.DATEONLY,
-                allowNull: true
+                type: Sequelize.DATE,
+                allowNull: false
             },
             dateOfRegistration :{
                 type: Sequelize.DATEONLY,
-                allowNull: true
+                allowNull: true,
+                defaultValue: new Date()
+                
             },
             hasMonthlyDonation :{
                 type: Sequelize.BOOLEAN,

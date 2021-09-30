@@ -22,6 +22,7 @@ const Project = (sequelize)=>{
             },
             RegistrationDate :{
                 type: Sequelize.DATEONLY,
+                defaultValue: new Date(),
                 allowNull: true
             },
             approbed :{
