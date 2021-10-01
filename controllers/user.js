@@ -12,6 +12,7 @@ exports.postAgregarUsuario = (req,res)=>{
         name: req.body.name,
         password: req.body.password,
         salt: req.body.salt,
+        phoneNumber: req.body.phoneNumber,
         dateOfBirth: req.body.birthday,
         hasMonthlyDonation: req.body.hasMonthlyDonation,
         confirmacionCorreo: req.body.confirmacionCorreo,
