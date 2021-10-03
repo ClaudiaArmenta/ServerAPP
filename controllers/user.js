@@ -14,8 +14,7 @@ exports.postAgregarUsuario = (req,res)=>{
         salt: req.body.salt,
         phoneNumber: req.body.phoneNumber,
         dateOfBirth: req.body.birthday,
-        hasMonthlyDonation: req.body.hasMonthlyDonation,
-        confirmacionCorreo: req.body.confirmacionCorreo,
+        hasMonthlyDonation: req.body.hasMonthlyDonation
     }).then(resultado=>console.log("Registro UserData exitoso"))
       .catch(error=>console.log(error));
     res.json({ username: 'UwU' })

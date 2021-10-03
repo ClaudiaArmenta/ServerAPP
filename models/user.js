@@ -43,6 +43,11 @@ const User= (sequelize)=>{
                 allowNull: false,
                 defaultValue: false
             },
+            confirmacionCorreo :{
+                type: Sequelize.BOOLEAN,
+                allowNull: true,
+                defaultValue: false
+            },
             totalDonation :{
                 type: Sequelize.INTEGER,
                 allowNull: false,
