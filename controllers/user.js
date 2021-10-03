@@ -4,8 +4,9 @@ const sequelize = require("../util/database");
 const User = sequelize.models.User;
 const path = require('path');
 const { RequestError } = require('tedious');
+const crypto = require('crypto');
 
-exports.postAgregarUsuario = (req,res)=>{    
+exports.postAgregarUsuario = (req,res)=>{
     console.log(req.body);
     User.create({
         email: req.body.email,
@@ -21,15 +22,15 @@ exports.postAgregarUsuario = (req,res)=>{
 };
 
 
-exports.postVerificaUsuario = (req,res)=>{    
+exports.postVerificaUsuario = (req,res)=>{
   console.log(req.body);
   User.findByPk(req.body.email)
   .then(resultado=>{
       if(resultado){
-        res.json({ answer: 'NO' });  
+        res.json({ answer: 'NO' });
       }else{
         res.json({ answer: 'SI' });
-      }        
+      }
   })
   .catch(error=>{
       console.log(error);
@@ -43,14 +44,14 @@ exports.postIniciarSesion = (req,res)=>{
   User.findByPk(req.body.email)
   .then(resultado=>{
       if(resultado){
-          if(req.body.password == resultado.password){                
-              res.send("siiuuuu");              
+          if(req.body.password == resultado.password){
+              res.send("siiuuuu");
           }else{
               res.send("contraseña mala");
           }
       }else{
           res.send("ni existe el usuario chavo");
-      }        
+      }
   })
   .catch(error=>{
       console.log(error);
