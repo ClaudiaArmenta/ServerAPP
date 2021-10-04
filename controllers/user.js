@@ -52,16 +52,31 @@ exports.postIniciarSesion = (req,res)=>{
   })
 };
 
-/*
 exports.forgotPassword = (req, res)=>{
-    val codigo = crypto.rand(6);
+    const codigo = makeCode(6);
     User.findByPk(req.body.email)
-  .then(resultado=>{
+    .then(resultado=>{
       if(resultado){
-        Project.update( { recoveryCode: codigo}, { where: {email: req.body.email } } ) .success(result => handleResult(result) ) .error(err => handleError(err))
-        res.json({ answer: 'NO' });
+        User.update( { recoveryCode: codigo}, { where: {email: req.body.email } } )
+        .success(res.send('código de recuperación establecido'))
+        .error(res.send('error al establecer código de recuperación'))
       }else{
-        res.json({ answer: 'SI' });
+        res.send('no se encontró al usuario');
       }
+    })
+    .catch(error=>{
+        console.log(error);
+        res.send(error);
+    })
+};
+
+function makeCode(length) {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() *
+ charactersLength));
+   }
+   return result;
 }
-*/

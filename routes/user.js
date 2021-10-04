@@ -10,6 +10,6 @@ router.get('/registros',userDonations.getDonations);
 
 router.post('/iniciarSesion',userController.postIniciarSesion);
 
-//router.post('/forgot', userController.forgotPassword);
+router.post('/forgot', userController.forgotPassword);
 
 module.exports =router;

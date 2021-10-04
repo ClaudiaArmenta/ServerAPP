@@ -57,13 +57,12 @@ const User= (sequelize)=>{
                 type: Sequelize.INTEGER,
                 allowNull: false,
                 defaultValue: 0
-            }/*,
+            },
             recoveryCode:{
-                type: Sequelize.INTEGER,
+                type: Sequelize.STRING,
                 allowNull: true,
                 defaultValue: null
             }
-            */
         });
 }
     module.exports = User;
