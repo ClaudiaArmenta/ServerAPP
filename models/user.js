@@ -36,7 +36,7 @@ const User= (sequelize)=>{
                 type: Sequelize.DATEONLY,
                 allowNull: true,
                 defaultValue: new Date()
-                
+
             },
             hasMonthlyDonation :{
                 type: Sequelize.BOOLEAN,
@@ -57,7 +57,13 @@ const User= (sequelize)=>{
                 type: Sequelize.INTEGER,
                 allowNull: false,
                 defaultValue: 0
+            }/*,
+            recoveryCode:{
+                type: Sequelize.INTEGER,
+                allowNull: true,
+                defaultValue: null
             }
+            */
         });
 }
     module.exports = User;

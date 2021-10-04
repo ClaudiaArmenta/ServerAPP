@@ -58,3 +58,17 @@ exports.postIniciarSesion = (req,res)=>{
       res.send(error);
   })
 };
+
+/*
+exports.forgotPassword = (req, res)=>{
+    val codigo = crypto.rand(6);
+    User.findByPk(req.body.email)
+  .then(resultado=>{
+      if(resultado){
+        Project.update( { recoveryCode: codigo}, { where: {email: req.body.email } } ) .success(result => handleResult(result) ) .error(err => handleError(err))
+        res.json({ answer: 'NO' });
+      }else{
+        res.json({ answer: 'SI' });
+      }
+}
+*/
