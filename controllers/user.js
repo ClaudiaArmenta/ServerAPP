@@ -7,29 +7,22 @@ const { RequestError } = require('tedious');
 const crypto = require('crypto');
 
 exports.postAgregarUsuario = (req,res)=>{
-    console.log(req.body);
-    User.create({
-        email: req.body.email,
-        name: req.body.name,
-        password: req.body.password,
-        salt: req.body.salt,
-        phoneNumber: req.body.phoneNumber,
-        dateOfBirth: req.body.birthday,
-        hasMonthlyDonation: req.body.hasMonthlyDonation
-    }).then(resultado=>console.log("Registro UserData exitoso"))
-      .catch(error=>console.log(error));
-    res.json({ username: 'UwU' })
-};
-
-
-exports.postVerificaUsuario = (req,res)=>{
   console.log(req.body);
   User.findByPk(req.body.email)
   .then(resultado=>{
       if(resultado){
         res.json({ answer: 'NO' });
       }else{
-        res.json({ answer: 'SI' });
+        User.create({
+          email: req.body.email,
+          name: req.body.name,
+          password: req.body.password,
+          salt: req.body.salt,
+          phoneNumber: req.body.phoneNumber,
+          dateOfBirth: req.body.birthday,
+          hasMonthlyDonation: req.body.hasMonthlyDonation
+      }).then(res.json({ answer: 'YES' }))
+        .catch(error=>console.log(error));
       }
   })
   .catch(error=>{
