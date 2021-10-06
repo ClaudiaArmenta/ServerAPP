@@ -37,12 +37,12 @@ exports.postIniciarSesion = (req,res)=>{
   .then(resultado=>{
       if(resultado){
           if(req.body.password == resultado.password){
-              res.send("siiuuuu");
+              res.send("SI");
           }else{
-              res.send("contraseña mala");
+              res.send("NO");
           }
       }else{
-          res.send("ni existe el usuario chavo");
+          res.send("NONEXIST");
       }
   })
   .catch(error=>{
