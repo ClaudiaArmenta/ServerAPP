@@ -19,7 +19,8 @@ exports.postAgregarUsuario = (req,res)=>{
           salt: req.body.UserData.salt,
           phoneNumber: req.body.UserData.phoneNumber,
           dateOfBirth: req.body.UserData.birthday,
-          hasMonthlyDonation: req.body.hasMonthlyDonation
+          hasMonthlyDonation: req.body.UserData.hasMonthlyDonation,
+          esAdmin: req.body.UserData.esAdmin
       }).then(res.send("YES"))
         .catch(error=>console.log(error));
       }
@@ -33,11 +34,14 @@ exports.postAgregarUsuario = (req,res)=>{
 
 exports.postIniciarSesion = (req,res)=>{
   console.log(req.body);
-  User.findByPk(req.body.email)
+  User.findByPk(req.body.UserData.email)
   .then(resultado=>{
       if(resultado){
-          if(req.body.password == resultado.password){
-              res.send("SI");
+          if(req.body.UserData.password == resultado.password){
+            if(resultado.esAdmin)
+              res.send("SIADMIN");
+            else
+              res.send("SINORMAL");
           }else{
               res.send("NO");
           }

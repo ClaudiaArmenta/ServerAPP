@@ -15,7 +15,8 @@ exports.getDonations = (req,res)=>{
             }
         })
         .then(registros=>{           
-            var data=[];
+            res.send(registros);
+            /*var data=[];
             registros.forEach(registro=>{
                 data.push(registro.dataValues);
             });
@@ -24,13 +25,13 @@ exports.getDonations = (req,res)=>{
                 personas:data,
                 sesion:"Autorizado",
                 hora:"14:00"
-            });
+            });*/
         })    
 };
 
 exports.postAgregarDonation= (req,res)=>{
     console.log(req.body);    
-    Usuario.create({
+    Donation.create({
         registrationDate : "2002-12-10"
     }).then(resultado=>console.log("Registro Usuario exitoso"))
       .catch(error=>console.log(error));

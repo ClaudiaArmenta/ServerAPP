@@ -62,6 +62,10 @@ const User= (sequelize)=>{
                 type: Sequelize.STRING,
                 allowNull: true,
                 defaultValue: null
+            },
+            esAdmin :{
+                type: Sequelize.BOOLEAN,
+                allowNull: false,
             }
         });
 }
