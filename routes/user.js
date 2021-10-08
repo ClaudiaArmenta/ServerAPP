@@ -14,7 +14,9 @@ router.post('/iniciarSesion',userController.postIniciarSesion);
 router.post('/agregarOrganizacion',organizationController.postAgregarOrganizacion);
 router.post('/iniciarSesionOrganizacion',organizationController.postIniciarSesion);
 
-router.get('/registros',userDonations.getDonations);
+
+//Donaciones
+router.post('/registros',userDonations.getDonations);
 
 
 

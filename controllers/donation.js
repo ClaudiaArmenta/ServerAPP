@@ -1,7 +1,7 @@
 //Traer el modelo asociado a la tabla usuario
 const Sequelize = require('sequelize');
 const sequelize = require("../util/database");
-const Donation = sequelize.models.donation;
+const Donation = sequelize.models.Donation;
 const path = require('path');
 
 
@@ -11,7 +11,7 @@ exports.getDonations = (req,res)=>{
     //SELECT * from usuario;
     Donation.findAll({
             where: {
-            UserIdUser: req.UserIdUser
+            UserEmail: req.body.UserEmail
             }
         })
         .then(registros=>{           
