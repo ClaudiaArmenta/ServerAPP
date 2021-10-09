@@ -6,16 +6,13 @@ const path = require('path');
 
 
 exports.getDonations = (req,res)=>{
-    //Simular consulta
-    //query
-    //SELECT * from usuario;
     Donation.findAll({
             where: {
-            UserEmail: req.body.UserEmail
+            UserEmail: req.body.email
             }
         })
         .then(registros=>{           
-            res.send(registros);
+            res.json(registros);
             /*var data=[];
             registros.forEach(registro=>{
                 data.push(registro.dataValues);
@@ -26,7 +23,7 @@ exports.getDonations = (req,res)=>{
                 sesion:"Autorizado",
                 hora:"14:00"
             });*/
-        })    
+        }).catch(error=>console.log(error));    
 };
 
 exports.postAgregarDonation= (req,res)=>{

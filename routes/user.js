@@ -9,6 +9,8 @@ const router = express.Router();
 //Registro e inicio Sesión --> Usuario
 router.post('/agregarUsuario',userController.postAgregarUsuario);
 router.post('/iniciarSesion',userController.postIniciarSesion);
+router.post('/validarCorreo',userController.postValidarCorreo);
+router.post('/updatePassword',userController.postUpdatePassword);
 
 //Registro e inicio sesion --> Organizacion
 router.post('/agregarOrganizacion',organizationController.postAgregarOrganizacion);
@@ -18,8 +20,14 @@ router.post('/iniciarSesionOrganizacion',organizationController.postIniciarSesio
 //Donaciones
 router.post('/registros',userDonations.getDonations);
 
+//Admin
+router.post('/proyectos',organizationController.postListaProyectos);
 
+//Organización
+router.post('/agregarOrganizacion',organizationController.postAgregarOrganizacion);
+router.post('/inicioSesionOrganizacion',organizationController.postIniciarSesion);
 
+//Javi
 router.post('/forgot', userController.forgotPassword);
 
 module.exports =router;

@@ -69,4 +69,4 @@ const User= (sequelize)=>{
             }
         });
 }
-    module.exports = User;
+module.exports = User;

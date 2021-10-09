@@ -5,6 +5,7 @@ const User = sequelize.models.User;
 const path = require('path');
 const { RequestError } = require('tedious');
 const crypto = require('crypto');
+const { resolveSoa } = require('dns');
 
 exports.postAgregarUsuario = (req,res)=>{
   User.findByPk(req.body.UserData.email)
@@ -54,6 +55,40 @@ exports.postIniciarSesion = (req,res)=>{
       res.send(error);
   })
 };
+
+
+exports.postValidarCorreo = (req,res)=>{
+  console.log(req.body);
+  User.findByPk(req.body.email)
+  .then(resultado=>{
+      if(resultado){
+        //Envia correo
+        res.send("SI");          
+      }else{
+          res.send("NO");
+      }
+  })
+  .catch(error=>{
+      console.log(error);
+      res.send(error);
+  })
+};
+
+
+exports.postUpdatePassword = (req,res)=>{
+  
+  User.update(
+    { password: req.body.password},
+    { where: { email: req.body.email } }
+  )
+    .then(result =>
+      res.send("YES")
+    )
+    .catch(err =>
+      res.send(err)
+    )
+}
+  
 
 exports.forgotPassword = (req, res)=>{
     const codigo = makeCode(6);
