@@ -23,10 +23,6 @@ router.post('/registros',userDonations.getDonations);
 //Admin
 router.post('/proyectos',organizationController.postListaProyectos);
 
-//Organización
-router.post('/agregarOrganizacion',organizationController.postAgregarOrganizacion);
-router.post('/inicioSesionOrganizacion',organizationController.postIniciarSesion);
-
 //Javi
 router.post('/forgot', userController.forgotPassword);
 
