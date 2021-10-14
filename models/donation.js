@@ -26,10 +26,15 @@ const Donation=(sequelize)=>{
                 allowNull: false,
                 defaultValue: false
             },
+            descripcion :{
+                type: Sequelize.STRING,
+                allowNull: false,
+                defaultValue: false
+            },
             idEmail:{
                 type: Sequelize.STRING,
                 allowNull: false,
-            },          
+            }
         });
     }
 module.exports = Donation;

@@ -8,6 +8,7 @@ const crypto = require('crypto');
 const { resolveSoa } = require('dns');
 
 exports.postAgregarUsuario = (req,res)=>{
+  console.log(req.body);
   User.findByPk(req.body.UserData.email)
   .then(resultado=>{
       if(resultado){
@@ -63,9 +64,9 @@ exports.postValidarCorreo = (req,res)=>{
   .then(resultado=>{
       if(resultado){
         //Envia correo
-        res.send("SI");          
+        res.send("NO");          
       }else{
-          res.send("NO");
+          res.send("SI");
       }
   })
   .catch(error=>{
