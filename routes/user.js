@@ -24,9 +24,6 @@ router.post('/rechazarProyecto',organizationController.postRechazarProyecto);
 router.post('/registros',userDonations.getDonations);
 
 
-//Admin
-router.post('/proyectos',organizationController.postListaProyectos);
-
 //Javi
 router.post('/forgot', userController.forgotPassword);
 
