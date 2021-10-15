@@ -49,9 +49,59 @@ exports.postIniciarSesion = (req,res)=>{
 };
 
 
-exports.postListaProyectos = (req,res)=>{
+exports.postListaProyectosPorAceptar = (req,res)=>{
   console.log(req.body);
-  Organization.findByPk(req.body.name)
+  Organization.findAll({
+    where: {
+      state: false
+    }
+  })
+  .then(resultado=>{
+      res.json(resultado)
+  })
+  .catch(error=>{
+      console.log(error);
+      res.send(error);
+  })
+};
+
+exports.postListaProyectosAceptados = (req,res)=>{
+  console.log(req.body);
+  Organization.findAll({
+    where: {
+      state: true
+    }
+  })
+  .then(resultado=>{
+      res.json(resultado)
+  })
+  .catch(error=>{
+      console.log(error);
+      res.send(error);
+  })
+};
+
+exports.postAceptarProyecto = (req,res)=>{
+  console.log(req.body);
+  Organization.update(
+    { state: true},
+    { where: { name: req.body.name}}    
+  )
+  .then(resultado=>{
+      res.json(resultado)
+  })
+  .catch(error=>{
+      console.log(error);
+      res.send(error);
+  })
+};
+
+
+exports.postRechazarProyecto = (req,res)=>{
+  console.log(req.body);
+  Organization.destroy(
+    { where: { name: req.body.name}}    
+  )
   .then(resultado=>{
       res.json(resultado)
   })

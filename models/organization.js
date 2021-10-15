@@ -31,6 +31,11 @@ const sequelize = require('../util/database');
             email: {
                 type: Sequelize.STRING,
                 allowNull: false
+            },
+            state: {
+                type: Sequelize.BOOLEAN,
+                allowNull: true,
+                defaultValue: false
             }
         });
  }
