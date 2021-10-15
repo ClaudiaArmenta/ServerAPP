@@ -24,9 +24,13 @@ const sequelize = require('../util/database');
                 allowNull: false
             },
             phoneNumber :{
-                type: Sequelize.INTEGER,
+                type: Sequelize.STRING,
                 allowNull: false,
                 defaultValue: false
+            },
+            email: {
+                type: Sequelize.STRING,
+                allowNull: false
             }
         });
  }

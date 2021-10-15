@@ -29,7 +29,7 @@ const User= (sequelize)=>{
                 allowNull: false
             },
             dateOfBirth :{
-                type: Sequelize.DATE,
+                type: Sequelize.DATEONLY,
                 allowNull: false
             },
             dateOfRegistration :{
@@ -66,6 +66,7 @@ const User= (sequelize)=>{
             esAdmin :{
                 type: Sequelize.BOOLEAN,
                 allowNull: false,
+                defaultValue: false
             }
         });
 }

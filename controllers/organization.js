@@ -11,11 +11,12 @@ exports.postAgregarOrganizacion = (req,res)=>{
         res.send("NO");
       }else{
         Organization.create({
-          name: req.body.name,
-          tag: req.body.tag,
-          description: req.body.description,
-          password: req.body.password,
-          phoneNumber: req.body.phoneNumber
+          name: req.body.UserOrganizacion.name,
+          tag: req.body.UserOrganizacion.tag,
+          description: req.body.UserOrganizacion.description,
+          password: req.body.UserOrganizacion.password,
+          phoneNumber: req.body.UserOrganizacion.phoneNumber,
+          email: req.body.UserOrganizacion.email
       }).then(res.send("YES"))
         .catch(error=>console.log(error));
       }

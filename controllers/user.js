@@ -36,10 +36,10 @@ exports.postAgregarUsuario = (req,res)=>{
 
 exports.postIniciarSesion = (req,res)=>{
   console.log(req.body);
-  User.findByPk(req.body.UserData.email)
+  User.findByPk(req.body.UserInicioSesion.email)
   .then(resultado=>{
       if(resultado){
-          if(req.body.UserData.password == resultado.password){
+          if(req.body.UserInicioSesion.password == resultado.password){
             if(resultado.esAdmin)
               res.send("SIADMIN");
             else

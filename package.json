@@ -23,7 +23,8 @@
   "dependencies": {
     "express": "^4.17.1",
     "nodemailer": "^6.6.5",
-    "sequelize": "^6.6.5",
-    "tedious": "^12.2.0"
+    "nodemon": "^2.0.13",
+    "sequelize": "^6.7.0",
+    "tedious": "^12.3.0"
   }
 }
