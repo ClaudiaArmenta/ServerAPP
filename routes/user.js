@@ -3,6 +3,7 @@ const express = require("express");
 const userController = require('../controllers/user');
 const userDonations = require('../controllers/donation');
 const organizationController = require('../controllers/organization');
+const projectController = require('../controllers/project');
 const router = express.Router();
 
 
@@ -15,10 +16,19 @@ router.post('/updatePassword',userController.postUpdatePassword);
 //Registro e inicio sesion --> Organizacion
 router.post('/agregarOrganizacion',organizationController.postAgregarOrganizacion);
 router.post('/iniciarSesionOrganizacion',organizationController.postIniciarSesion);
-router.post('/listaProyectosAceptados',organizationController.postListaProyectosAceptados);
-router.post('/listaProyectosPorAceptar',organizationController.postListaProyectosPorAceptar);
-router.post('/aceptarProyecto',organizationController.postAceptarProyecto);
-router.post('/rechazarProyecto',organizationController.postRechazarProyecto);
+router.post('/organizacionesPorAceptar',organizationController.postOrganizacionesPorAceptar);
+router.post('/organizacionesAceptadas',organizationController.postOrganizacionesAceptadas);
+router.post('/aceptarOrganizacion',organizationController.postAceptarOrganizacion);
+router.post('/rechazarOrganizacion',organizationController.postRechazarOrganizacion);
+
+//Proyecto
+router.post('/agregarProyecto',projectController.postAgregarProyecto);
+router.post('/listaProyectosAceptados',projectController.postListaProyectosAceptados);
+router.post('/listaProyectosPorAceptar',projectController.postListaProyectosPorAceptar);
+router.post('/aceptarProyecto',projectController.postAceptarProyecto);
+router.post('/rechazarProyecto',projectController.postRechazarProyecto);
+
+
 
 //Donaciones
 router.post('/registros',userDonations.getDonations);

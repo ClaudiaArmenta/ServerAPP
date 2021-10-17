@@ -49,7 +49,7 @@ exports.postIniciarSesion = (req,res)=>{
 };
 
 
-exports.postListaProyectosPorAceptar = (req,res)=>{
+exports.postOrganizacionesPorAceptar = (req,res)=>{
   console.log(req.body);
   Organization.findAll({
     where: {
@@ -65,7 +65,7 @@ exports.postListaProyectosPorAceptar = (req,res)=>{
   })
 };
 
-exports.postListaProyectosAceptados = (req,res)=>{
+exports.postOrganizacionesAceptadas = (req,res)=>{
   console.log(req.body);
   Organization.findAll({
     where: {
@@ -81,7 +81,7 @@ exports.postListaProyectosAceptados = (req,res)=>{
   })
 };
 
-exports.postAceptarProyecto = (req,res)=>{
+exports.postAceptarOrganizacion = (req,res)=>{
   console.log(req.body);
   Organization.update(
     { state: true},
@@ -97,10 +97,10 @@ exports.postAceptarProyecto = (req,res)=>{
 };
 
 
-exports.postRechazarProyecto = (req,res)=>{
+exports.postRechazarOrganizacion = (req,res)=>{
   console.log(req.body);
   Organization.destroy(
-    { where: { name: req.body.name}}    
+    { where: { Project: req.body.name}}    
   )
   .then(resultado=>{
       res.json(resultado)
