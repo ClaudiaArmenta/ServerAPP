@@ -8,7 +8,7 @@ exports.postAgregarProyecto = (req,res)=>{
     
     Proyecto.findAll({
         where: {
-          ProjectName: req.body.name
+          ProjectName: req.body.UserData.ProjectName
         }
       })
   .then(resultado=>{
@@ -20,7 +20,7 @@ exports.postAgregarProyecto = (req,res)=>{
           ProjectName: req.body.UserData.ProjectName,
           description: req.body.UserData.description,
           UserEmail: req.body.UserData.userEmail,
-          OrganizationName: req.body.organizationName
+          OrganizationName: req.body.UserData.organizationName
       }).then(res.send("YES"))
         .catch(error=>console.log(error));
       }

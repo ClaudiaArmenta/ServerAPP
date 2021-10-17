@@ -30,7 +30,7 @@ exports.postAgregarOrganizacion = (req,res)=>{
 
 exports.postIniciarSesionOrg = (req,res)=>{
   console.log(req.body);
-  Organization.findByPk(req.body.OrgInicioSesion.email)
+  Organization.findByPk(req.body.OrgInicioSesion.name)
   .then(resultado=>{
       if(resultado){
           if(req.body.UserOrganizacion.password == resultado.password){
