@@ -28,7 +28,8 @@ app.use('/user',usuarioRoutes);
 
 //Inicializar servidor
 const puerto=8080;
-sequelize.sync({/*force: true*/})
+sequelize.sync({/*force: true*/
+})
     .then(resultado=>{
         console.log('Conexión exitosa');
         //Lanza el servidor para escuchar peticiones
