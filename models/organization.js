@@ -6,9 +6,13 @@ const sequelize = require('../util/database');
  const Organization = (sequelize)=>{
     sequelize.define('Organization',{
         //Atributos
-            name :{
+            email: {
                 type: Sequelize.STRING,
                 primaryKey: true,
+                allowNull: false
+            },
+            name :{
+                type: Sequelize.STRING,                
                 allowNull: false
             },
             tag :{
@@ -27,11 +31,7 @@ const sequelize = require('../util/database');
                 type: Sequelize.STRING,
                 allowNull: false,
                 defaultValue: false
-            },
-            email: {
-                type: Sequelize.STRING,
-                allowNull: false
-            },
+            },            
             state: {
                 type: Sequelize.BOOLEAN,
                 allowNull: true,

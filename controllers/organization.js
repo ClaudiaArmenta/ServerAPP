@@ -5,7 +5,8 @@ const Organization = sequelize.models.Organization;
 const path = require('path');
 
 exports.postAgregarOrganizacion = (req,res)=>{
-  Organization.findByPk(req.body.name)
+  console.log(req.body);
+  Organization.findByPk(req.body.UserOrganizacion.email)
   .then(resultado=>{
       if(resultado){
         res.send("NO");
@@ -27,10 +28,9 @@ exports.postAgregarOrganizacion = (req,res)=>{
   })
 };
 
-
 exports.postIniciarSesionOrg = (req,res)=>{
   console.log(req.body);
-  Organization.findByPk(req.body.OrgInicioSesion.name)
+  Organization.findByPk(req.body.UserOrganizacion.email)
   .then(resultado=>{
       if(resultado){
           if(req.body.UserOrganizacion.password == resultado.password){
