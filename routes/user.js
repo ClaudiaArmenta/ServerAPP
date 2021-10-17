@@ -15,7 +15,7 @@ router.post('/updatePassword',userController.postUpdatePassword);
 
 //Registro e inicio sesion --> Organizacion
 router.post('/agregarOrganizacion',organizationController.postAgregarOrganizacion);
-router.post('/iniciarSesionOrganizacion',organizationController.postIniciarSesion);
+router.post('/iniciarSesionOrganizacion',organizationController.postIniciarSesionOrg);
 router.post('/organizacionesPorAceptar',organizationController.postOrganizacionesPorAceptar);
 router.post('/organizacionesAceptadas',organizationController.postOrganizacionesAceptadas);
 router.post('/aceptarOrganizacion',organizationController.postAceptarOrganizacion);

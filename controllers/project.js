@@ -17,9 +17,9 @@ exports.postAgregarProyecto = (req,res)=>{
         res.send(resultado);
       }else{
         Proyecto.create({
-          ProjectName: req.body.name,
-          description: req.body.description,
-          UserEmail: req.body.userEmail,
+          ProjectName: req.body.UserData.ProjectName,
+          description: req.body.UserData.description,
+          UserEmail: req.body.UserData.userEmail,
           OrganizationName: req.body.organizationName
       }).then(res.send("YES"))
         .catch(error=>console.log(error));
@@ -67,7 +67,7 @@ exports.postAceptarProyecto = (req,res)=>{
   console.log(req.body);
   Proyecto.update(
     { approbed: true},
-    { where: { ProjectName: req.body.name}}    
+    { where: { ProjectName: req.body.UserData.ProjectName}}    
   )
   .then(resultado=>{
       res.json(resultado)
@@ -80,9 +80,9 @@ exports.postAceptarProyecto = (req,res)=>{
 
 
 exports.postRechazarProyecto = (req,res)=>{
-  console.log(req.body);
+  console.log(req.body.UserData.ProjectName);
   Proyecto.destroy(
-    { where: { ProjectName: req.body.name}}    
+    { where: { ProjectName: req.body.UserData.ProjectName}}    
   )
   .then(resultado=>{
       res.json(resultado)
