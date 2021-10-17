@@ -29,7 +29,7 @@ exports.getDonations = (req,res)=>{
 exports.postAgregarDonation= (req,res)=>{
     console.log(req.body);    
     Donation.create({
-        registrationDate : "2002-12-10"
+        quantity: req.body.quantity
     }).then(resultado=>console.log("Registro Usuario exitoso"))
       .catch(error=>console.log(error));
     res.send("Ok");

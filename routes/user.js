@@ -28,8 +28,6 @@ router.post('/listaProyectosPorAceptar',projectController.postListaProyectosPorA
 router.post('/aceptarProyecto',projectController.postAceptarProyecto);
 router.post('/rechazarProyecto',projectController.postRechazarProyecto);
 
-
-
 //Donaciones
 router.post('/registros',userDonations.getDonations);
 
