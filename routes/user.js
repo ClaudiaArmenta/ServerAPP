@@ -15,13 +15,14 @@ router.post('/updatePassword',userController.postUpdatePassword);
 //Registro e inicio sesion --> Organizacion
 router.post('/agregarOrganizacion',organizationController.postAgregarOrganizacion);
 router.post('/iniciarSesionOrganizacion',organizationController.postIniciarSesion);
-
+router.post('/listaProyectosAceptados',organizationController.postListaProyectosAceptados);
+router.post('/listaProyectosPorAceptar',organizationController.postListaProyectosPorAceptar);
+router.post('/aceptarProyecto',organizationController.postAceptarProyecto);
+router.post('/rechazarProyecto',organizationController.postRechazarProyecto);
 
 //Donaciones
 router.post('/registros',userDonations.getDonations);
 
-//Admin
-router.post('/proyectos',organizationController.postListaProyectos);
 
 //Javi
 router.post('/forgot', userController.forgotPassword);
