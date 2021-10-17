@@ -19,7 +19,8 @@ const Donation=(sequelize)=>{
             },
             donationDate :{
                 type: Sequelize.DATEONLY,
-                allowNull: true
+                allowNull: true,
+                defaultValue: new Date()
             },
             taxDeducibe :{
                 type: Sequelize.BOOLEAN,
