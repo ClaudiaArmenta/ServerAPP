@@ -29,7 +29,8 @@ exports.getDonations = (req,res)=>{
 exports.postAgregarDonation= (req,res)=>{
     console.log(req.body);    
     Donation.create({
-        quantity: req.body.quantity
+        quantity: req.body.quantity,
+        description: req.body.description
     }).then(resultado=>console.log("Registro Usuario exitoso"))
       .catch(error=>console.log(error));
     res.send("Ok");
