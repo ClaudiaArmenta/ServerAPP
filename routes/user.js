@@ -35,5 +35,6 @@ router.post('/hacerDonacion',userDonations.postAgregarDonation);
 
 //Javi
 router.post('/forgot', userController.forgotPassword);
+router.post('/recover', userController.recoverPassword);
 
 module.exports =router;

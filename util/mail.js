@@ -1,8 +1,12 @@
 const nodemailer = require('nodemailer');
 
-//Cuenta con la que se va a envíar el correo.
-const correo_origen = 'elcorreo@itesm.mx'
-const password  = 'constraseña123'
+let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: process.env.EMAIL || 'abc@gmail.com', // TODO: your gmail account
+        pass: process.env.PASSWORD || '1234' // TODO: your gmail password
+    }
+});
 
 //Cuenta a la que se va a envíar el correo
 var correo_destino = 'destino@itesm.mx'
@@ -15,17 +19,16 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-const mailOptions(correo_origen, correo_destino) = {
-  from: correo_origen,
-  to: correo_destino,
-  subject: 'Confirmación de donación.',
-  html: '<h1>Su donación fue completada con éxito.<h1><p>Gracias por su donación.<p>'
+let mailOptions = {
+    from: 'abc@gmail.com', // TODO: email sender
+    to: 'cba@gmail.com', // TODO: email receiver
+    subject: 'Nodemailer - Test',
+    text: 'Wooohooo it works!!',
 };
 
-transporter.sendMail(mailOptions(correo_origen, correo_destino), function(error, info){
-  if (error) {
-    console.log(error);
-  } else {
-    console.log('Email sent: ' + info.response);
-  }
+transporter.sendMail(mailOptions, (err, data) => {
+    if (err) {
+        return log('Error occurs');
+    }
+    return log('Email sent!!!');
 });
