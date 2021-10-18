@@ -92,7 +92,7 @@ exports.postUpdatePassword = (req,res)=>{
     .catch(err =>
       res.send(err)
     )
-}
+};
 
 
 exports.forgotPassword = (req, res)=>{
@@ -103,6 +103,30 @@ exports.forgotPassword = (req, res)=>{
         User.update( { recoveryCode: codigo}, { where: {email: req.body.email } } )
         .success(sendEmail(codigo, req.body.email))
         .error(res.send('error al establecer código de recuperación'))
+      }else{
+        res.send('no se encontró al usuario');
+      }
+    })
+    .catch(error=>{
+        console.log(error);
+        res.send(error);
+    })
+};
+
+exports.recoverPassword = (req, res)=>{
+    User.findByPk(req.body.email)
+    .then(resultado=>{
+      if(resultado){
+          if (resultado.recoveryCode == req.body.codigo)
+          {
+              User.update({ password: req.body.password}, { where: { email: req.body.email } })
+                .then(result =>
+                    res.send("YES")
+                )
+                .catch(err =>
+                    res.send(err)
+                )
+          }
       }else{
         res.send('no se encontró al usuario');
       }
