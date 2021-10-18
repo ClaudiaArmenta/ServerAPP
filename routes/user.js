@@ -30,6 +30,7 @@ router.post('/rechazarProyecto',projectController.postRechazarProyecto);
 
 //Donaciones
 router.post('/registros',userDonations.getDonations);
+router.post('/hacerDonacion',userDonations.postAgregarDonation);
 
 
 //Javi
