@@ -8,7 +8,7 @@ const path = require('path');
 exports.getDonations = (req,res)=>{
     Donation.findAll({
             where: {
-            UserEmail: req.body.email
+            UserEmail: req.body.Correo.email
             }
         })
         .then(registros=>{           
