@@ -6,6 +6,7 @@ const path = require('path');
 const { RequestError } = require('tedious');
 const crypto = require('crypto');
 const { resolveSoa } = require('dns');
+const nodemailer = require('nodemailer');
 
 exports.postAgregarUsuario = (req,res)=>{
   console.log(req.body);
@@ -44,11 +45,11 @@ exports.postIniciarSesion = (req,res)=>{
               if(resultado.esAdmin)
                 res.send("SIADMIN");
               else
-                res.send("SINORMAL");  
+                res.send("SINORMAL");
             }else
             res.send("NO");
           }else{
-            res.send("NOCONFIRMOCORREO");                
+            res.send("NOCONFIRMOCORREO");
           }
       }else{
           res.send("NONEXIST");
@@ -67,7 +68,7 @@ exports.postValidarCorreo = (req,res)=>{
   .then(resultado=>{
       if(resultado){
         //Envia correo
-        res.send("NO");          
+        res.send("NO");
       }else{
           res.send("SI");
       }
@@ -80,7 +81,7 @@ exports.postValidarCorreo = (req,res)=>{
 
 
 exports.postUpdatePassword = (req,res)=>{
-  
+
   User.update(
     { password: req.body.password},
     { where: { email: req.body.email } }
@@ -92,15 +93,15 @@ exports.postUpdatePassword = (req,res)=>{
       res.send(err)
     )
 }
-  
+
 
 exports.forgotPassword = (req, res)=>{
-    const codigo = makeCode(6);
+    var codigo = makeCode(6);
     User.findByPk(req.body.email)
     .then(resultado=>{
       if(resultado){
         User.update( { recoveryCode: codigo}, { where: {email: req.body.email } } )
-        .success(res.send('código de recuperación establecido'))
+        .success(sendEmail(codigo, req.body.email))
         .error(res.send('error al establecer código de recuperación'))
       }else{
         res.send('no se encontró al usuario');
@@ -121,4 +122,29 @@ function makeCode(length) {
  charactersLength));
    }
    return result;
+}
+
+function sendEmail(code, address) {
+
+    let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: process.env.EMAIL || 'abc@gmail.com', // TODO: your gmail account
+        pass: process.env.PASSWORD || '1234' // TODO: your gmail password
+        }
+    });
+
+    let mailOptions = {
+        from: 'abc@gmail.com', // email sender
+        to: address, // email receiver
+        subject: 'Código de recuperación',
+        text: 'Código de recuperación:\n' + code,
+    };
+
+    transporter.sendMail(mailOptions, (err, data) => {
+        if (err) {
+            return log('Error occurs');
+        }
+        return log('Email sent!!!');
+    });
 }
