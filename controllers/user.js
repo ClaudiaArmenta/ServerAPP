@@ -39,13 +39,16 @@ exports.postIniciarSesion = (req,res)=>{
   User.findByPk(req.body.UserInicioSesion.email)
   .then(resultado=>{
       if(resultado){
-          if(req.body.UserInicioSesion.password == resultado.password){
-            if(resultado.esAdmin)
-              res.send("SIADMIN");
-            else
-              res.send("SINORMAL");
+          if(resultado.confirmacionCorreo){
+            if(req.body.UserInicioSesion.password == resultado.password){
+              if(resultado.esAdmin)
+                res.send("SIADMIN");
+              else
+                res.send("SINORMAL");  
+            }else
+            res.send("NO");
           }else{
-              res.send("NO");
+            res.send("NOCONFIRMOCORREO");                
           }
       }else{
           res.send("NONEXIST");
