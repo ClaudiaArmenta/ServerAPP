@@ -151,11 +151,13 @@ function makeCode(length) {
 function sendEmail(code, address) {
 
     let transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: process.env.EMAIL || 'abc@gmail.com', // TODO: your gmail account
-        pass: process.env.PASSWORD || '1234' // TODO: your gmail password
-        }
+        host: "smtp.ethereal.email",
+        port: 587,
+        secure: false, // true for 465, false for other ports
+        auth: {
+            user: testAccount.user, // generated ethereal user
+            pass: testAccount.pass, // generated ethereal password
+        },
     });
 
     let mailOptions = {
