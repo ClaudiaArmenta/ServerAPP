@@ -85,7 +85,7 @@ exports.postAceptarOrganizacion = (req,res)=>{
   console.log(req.body);
   Organization.update(
     { state: true},
-    { where: { name: req.body.name}}    
+    { where: { name: req.body.UserOrganizacion.name}}    
   )
   .then(resultado=>{
       res.json(resultado)
@@ -100,7 +100,7 @@ exports.postAceptarOrganizacion = (req,res)=>{
 exports.postRechazarOrganizacion = (req,res)=>{
   console.log(req.body);
   Organization.destroy(
-    { where: { Project: req.body.name}}    
+    { where: { name: req.body.UserOrganizacion.name}}    
   )
   .then(resultado=>{
       res.json(resultado)

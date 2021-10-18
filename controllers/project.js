@@ -20,7 +20,8 @@ exports.postAgregarProyecto = (req,res)=>{
           ProjectName: req.body.UserData.ProjectName,
           description: req.body.UserData.description,
           UserEmail: req.body.UserData.userEmail,
-          OrganizationEmail: req.body.UserData.OrganizationName
+
+          OrganizationName: req.body.UserData.organization
       }).then(res.send("YES"))
         .catch(error=>console.log(error));
       }
