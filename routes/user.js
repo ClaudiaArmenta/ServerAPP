@@ -13,6 +13,10 @@ router.post('/iniciarSesion',userController.postIniciarSesion);
 router.post('/validarCorreo',userController.postValidarCorreo);
 router.post('/updatePassword',userController.postUpdatePassword);
 
+//Recuperación de contraseña
+router.post('/forgot', userController.forgotPassword);
+router.post('/recover', userController.recoverPassword);
+
 //Registro e inicio sesion --> Organizacion
 router.post('/agregarOrganizacion',organizationController.postAgregarOrganizacion);
 router.post('/iniciarSesionOrganizacion',organizationController.postIniciarSesionOrg);
@@ -31,10 +35,5 @@ router.post('/rechazarProyecto',projectController.postRechazarProyecto);
 //Donaciones
 router.post('/registros',userDonations.getDonations);
 router.post('/hacerDonacion',userDonations.postAgregarDonation);
-
-
-//Javi
-router.post('/forgot', userController.forgotPassword);
-router.post('/recover', userController.recoverPassword);
 
 module.exports =router;
