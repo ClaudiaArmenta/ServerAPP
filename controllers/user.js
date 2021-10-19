@@ -63,7 +63,7 @@ exports.postIniciarSesion = (req,res)=>{
 
 exports.postNombreUsuario = (req,res)=>{
   console.log(req.body);
-  User.findByPk(req.body.NameData.email)
+  User.findByPk(req.body.email)
   .then(resultado=>{
     res.send(resultado.name);    
   })

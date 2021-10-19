@@ -50,7 +50,7 @@ exports.postIniciarSesionOrg = (req,res)=>{
 
 exports.postNombreOrganizacion = (req,res)=>{
   console.log(req.body);
-  Organization.findByPk(req.body.NameData.email)
+  Organization.findByPk(req.body.email)
   .then(resultado=>{
       res.send(resultado.name);
   })
