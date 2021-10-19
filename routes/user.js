@@ -18,6 +18,9 @@ router.post('/nombreUsuario',userController.postNombreUsuario);
 router.post('/forgot', userController.forgotPassword);
 router.post('/recover', userController.recoverPassword);
 
+//Correo de contacto
+router.post('/contacto', userController.postEmailContacto);
+
 //Registro e inicio sesion --> Organizacion
 router.post('/agregarOrganizacion',organizationController.postAgregarOrganizacion);
 router.post('/iniciarSesionOrganizacion',organizationController.postIniciarSesionOrg);

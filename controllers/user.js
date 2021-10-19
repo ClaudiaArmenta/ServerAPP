@@ -93,11 +93,9 @@ exports.postValidarCorreo = (req,res)=>{
 
 
 exports.postUpdatePassword = (req,res)=>{
-
-  User.update(
+    User.update(
     { password: req.body.password},
-    { where: { email: req.body.email } }
-  )
+    { where: { email: req.body.email } })
     .then(result =>
       res.send("YES")
     )
@@ -106,16 +104,25 @@ exports.postUpdatePassword = (req,res)=>{
     )
 };
 
+exports.postEmailContacto = (req, res)=>{
+    console.log(req.body);
+    sendContactEmail(req.body.email, req.body.name, req.body.surname)
+    .then(res.send('correo enviado'))
+    .catch(error=>{
+        console.log(error);
+        res.send(error);
+    })
+};
 
 exports.forgotPassword = (req, res)=>{
-    var codigo = makeCode(6);
     User.findByPk(req.body.email)
     .then(resultado=>{
       if(resultado){
+        var codigo = makeCode(6);
         User.update({ recoveryCode: codigo}, { where: {email: req.body.email } } )
-          .then(result =>
+        .then(result =>
             sendRecoveryEmail(codigo, req.body.email).then(res.send("YES")))
-          .catch(err =>
+        .catch(err =>
             res.send("no se pudo"))
       }else{
         res.send('no se encontró al usuario');
@@ -135,8 +142,8 @@ exports.recoverPassword = (req, res)=>{
           {
               if (req.body.codigo == resultado.recoveryCode)
               {
-                  User.update({ password: req.body.password, recoveryCode: "0"}, { where: { email: req.body.email } })
-                    .then(res.send("YES"));
+                User.update({ password: req.body.password, recoveryCode: "0"}, { where: { email: req.body.email } })
+                .then(res.send("YES"));
               }else{
                   res.send('el código ingresado es incorrecto');
               }
@@ -182,7 +189,7 @@ async function sendRecoveryEmail(code, address) {
         from: "contacto@dibujandounamañana.org", // sender address
         to: "yourmail@mail.com", // list of receivers
         subject: "Código de recuperación", // Subject line
-        text: "Su código de recuperación es " + code + ".", // plain text body
+        text: "Su código de recuperación es:\n\n" + code, // plain text body
         //html: "<b>Hello world?</b>", // html body
     });
 
@@ -190,7 +197,7 @@ async function sendRecoveryEmail(code, address) {
     console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
 }
 
-async function sendEmail(address, name, surname) {
+async function sendContactEmail(address, name, surname) {
 
     let testAccount = await nodemailer.createTestAccount();
 
