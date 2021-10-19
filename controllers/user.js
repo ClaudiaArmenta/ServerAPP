@@ -131,12 +131,17 @@ exports.recoverPassword = (req, res)=>{
     User.findByPk(req.body.email)
     .then(resultado=>{
       if(resultado){
-          if (resultado.recoveryCode == req.body.codigo)
+          if (req.body.codigo != 0)
           {
-              User.update({ password: req.body.password, recoveryCode: "0"}, { where: { email: req.body.email } })
-              .then(res.send("YES"));
+              if (req.body.codigo == resultado.recoveryCode)
+              {
+                  User.update({ password: req.body.password, recoveryCode: "0"}, { where: { email: req.body.email } })
+                    .then(res.send("YES"));
+              }else{
+                  res.send('el código ingresado es incorrecto');
+              }
           }else{
-              res.send('el código ingresado es incorrecto');
+              res.send('no se ha solicitado un código de recuperación para esta cuenta');
           }
       }else{
         res.send('no se encontró al usuario');
