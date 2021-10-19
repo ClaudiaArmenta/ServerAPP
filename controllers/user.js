@@ -123,7 +123,7 @@ exports.forgotPassword = (req, res)=>{
         .then(result =>
             sendRecoveryEmail(codigo, req.body.email).then(res.send("YES")))
         .catch(err =>
-            res.send("no se pudo"))
+            res.send("no se pudo\n" + err))
       }else{
         res.send('no se encontró al usuario');
       }
@@ -173,52 +173,38 @@ function makeCode(length) {
 
 async function sendRecoveryEmail(code, address) {
 
-    let testAccount = await nodemailer.createTestAccount();
-
     let transporter = nodemailer.createTransport({
-        host: "smtp.ethereal.email",
-        port: 587,
-        secure: false, // true for 465, false for other ports
+        service: 'gmail',
         auth: {
-            user: testAccount.user, // generated ethereal user
-            pass: testAccount.pass, // generated ethereal password
-        },
+            user: process.env.EMAIL || 'abc@gmail.com',
+            pass: process.env.PASSWORD || '1234'
+        }
     });
 
    let info = await transporter.sendMail({
-        from: "contacto@dibujandounamañana.org", // sender address
-        to: "yourmail@mail.com", // list of receivers
-        subject: "Código de recuperación", // Subject line
+        from: transporter.auth.user, // sender address
+        to: address, // list of receivers
+        subject: "Código de recuperación.", // Subject line
         text: "Su código de recuperación es:\n\n" + code, // plain text body
         //html: "<b>Hello world?</b>", // html body
     });
-
-    console.log("Message sent: %s", info.messageId);
-    console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
 }
 
 async function sendContactEmail(address, name, surname) {
 
-    let testAccount = await nodemailer.createTestAccount();
-
     let transporter = nodemailer.createTransport({
-        host: "smtp.ethereal.email",
-        port: 587,
-        secure: false, // true for 465, false for other ports
+        service: 'gmail',
         auth: {
-            user: testAccount.user, // generated ethereal user
-            pass: testAccount.pass, // generated ethereal password
-        },
+            user: process.env.EMAIL || 'abc@gmail.com',
+            pass: process.env.PASSWORD || '1234'
+        }
     });
 
-   let info = await transporter.sendMail({
-        from: "contacto@dibujandounamañana.org", // sender address
-        to: "yourmail@mail.com", // list of receivers
+    let info = await transporter.sendMail({
+        from: transporter.auth.user, // sender address
+        to: address, // list of receivers
         subject: "Confirmación de solicitud de contacto.", // Subject line
         text: "Gracias por querer ser parte de nuestro proyecto, " + name + " " + surname + ".\nTe contactaremos con esta dirección de correo electrónico.", // plain text body
         //html: "<b>Hello world?</b>", // html body
     });
-
-    console.log("Message sent: %s", info.messageId);
-    console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
 }
