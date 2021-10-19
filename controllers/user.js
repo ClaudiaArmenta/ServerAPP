@@ -133,7 +133,8 @@ exports.recoverPassword = (req, res)=>{
       if(resultado){
           if (resultado.recoveryCode == req.body.codigo)
           {
-              User.update({ password: req.body.password}, { where: { email: req.body.email } });
+              User.update({ password: req.body.password, recoveryCode: "0"}, { where: { email: req.body.email } })
+              .then(res.send("YES"));
           }else{
               res.send('el código ingresado es incorrecto');
           }
