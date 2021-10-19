@@ -113,8 +113,12 @@ exports.forgotPassword = (req, res)=>{
     .then(resultado=>{
       if(resultado){
         User.update( { recoveryCode: codigo}, { where: {email: req.body.email } } )
-        .success(sendRecoveryEmail(codigo, req.body.email))
-        .error(res.send('error al establecer código de recuperación'))
+        .then(result =>
+          sendRecoveryEmail(codigo, req.body.email).then(res.send("YES"))
+        )
+        .catch(err =>
+          res.send("no se pudo")
+        )        
       }else{
         res.send('no se encontró al usuario');
       }
@@ -180,7 +184,7 @@ async function sendRecoveryEmail(code, address) {
         subject: "Código de recuperación", // Subject line
         text: "Su código de recuperación es " + code + ".", // plain text body
         //html: "<b>Hello world?</b>", // html body
-    });
+    });    
 }
 
 async function sendEmail(address, name, surname) {
