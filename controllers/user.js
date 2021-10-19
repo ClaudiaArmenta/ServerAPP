@@ -101,7 +101,7 @@ exports.forgotPassword = (req, res)=>{
     .then(resultado=>{
       if(resultado){
         User.update( { recoveryCode: codigo}, { where: {email: req.body.email } } )
-        .success(sendEmail(codigo, req.body.email))
+        .success(sendRecoveryEmail(codigo, req.body.email))
         .error(res.send('error al establecer código de recuperación'))
       }else{
         res.send('no se encontró al usuario');
@@ -148,7 +148,9 @@ function makeCode(length) {
    return result;
 }
 
-function sendEmail(code, address) {
+async function sendRecoveryEmail(code, address) {
+
+    let testAccount = await nodemailer.createTestAccount();
 
     let transporter = nodemailer.createTransport({
         host: "smtp.ethereal.email",
@@ -160,17 +162,34 @@ function sendEmail(code, address) {
         },
     });
 
-    let mailOptions = {
-        from: 'abc@gmail.com', // email sender
-        to: address, // email receiver
-        subject: 'Código de recuperación',
-        text: 'Código de recuperación:\n' + code,
-    };
+   let info = await transporter.sendMail({
+        from: testAccount.user, // sender address
+        to: address, // list of receivers
+        subject: "Código de recuperación", // Subject line
+        text: "Su código de recuperación es " + code + ".", // plain text body
+        //html: "<b>Hello world?</b>", // html body
+    });
+}
 
-    transporter.sendMail(mailOptions, (err, data) => {
-        if (err) {
-            return log('Error occurs');
-        }
-        return log('Email sent!!!');
+async function sendEmail(address, name, surname) {
+
+    let testAccount = await nodemailer.createTestAccount();
+
+    let transporter = nodemailer.createTransport({
+        host: "smtp.ethereal.email",
+        port: 587,
+        secure: false, // true for 465, false for other ports
+        auth: {
+            user: testAccount.user, // generated ethereal user
+            pass: testAccount.pass, // generated ethereal password
+        },
+    });
+
+   let info = await transporter.sendMail({
+        from: testAccount.user, // sender address
+        to: address, // list of receivers
+        subject: "Confirmación de solicitud de contacto.", // Subject line
+        text: "Gracias por querer ser parte de nuestro proyecto, " + name + " " + surname + ".\nTe contactaremos con esta dirección de correo electrónico.", // plain text body
+        //html: "<b>Hello world?</b>", // html body
     });
 }
