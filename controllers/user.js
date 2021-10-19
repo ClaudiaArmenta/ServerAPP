@@ -174,12 +174,15 @@ async function sendRecoveryEmail(code, address) {
     });
 
    let info = await transporter.sendMail({
-        from: testAccount.user, // sender address
-        to: address, // list of receivers
+        from: "contacto@dibujandounamañana.org", // sender address
+        to: "yourmail@mail.com", // list of receivers
         subject: "Código de recuperación", // Subject line
         text: "Su código de recuperación es " + code + ".", // plain text body
         //html: "<b>Hello world?</b>", // html body
     });
+
+    console.log("Message sent: %s", info.messageId);
+    console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
 }
 
 async function sendEmail(address, name, surname) {
@@ -197,10 +200,13 @@ async function sendEmail(address, name, surname) {
     });
 
    let info = await transporter.sendMail({
-        from: testAccount.user, // sender address
-        to: address, // list of receivers
+        from: "contacto@dibujandounamañana.org", // sender address
+        to: "yourmail@mail.com", // list of receivers
         subject: "Confirmación de solicitud de contacto.", // Subject line
         text: "Gracias por querer ser parte de nuestro proyecto, " + name + " " + surname + ".\nTe contactaremos con esta dirección de correo electrónico.", // plain text body
         //html: "<b>Hello world?</b>", // html body
     });
+
+    console.log("Message sent: %s", info.messageId);
+    console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
 }
