@@ -12,6 +12,7 @@ router.post('/agregarUsuario',userController.postAgregarUsuario);
 router.post('/iniciarSesion',userController.postIniciarSesion);
 router.post('/validarCorreo',userController.postValidarCorreo);
 router.post('/updatePassword',userController.postUpdatePassword);
+router.post('/nombreUsuario',userController.postNombreUsuario);
 
 //Recuperación de contraseña
 router.post('/forgot', userController.forgotPassword);
@@ -24,6 +25,7 @@ router.post('/organizacionesPorAceptar',organizationController.postOrganizacione
 router.post('/organizacionesAceptadas',organizationController.postOrganizacionesAceptadas);
 router.post('/aceptarOrganizacion',organizationController.postAceptarOrganizacion);
 router.post('/rechazarOrganizacion',organizationController.postRechazarOrganizacion);
+router.post('/nombreOrganizacion',organizationController.postNombreOrganizacion);
 
 //Proyecto
 router.post('/agregarProyecto',projectController.postAgregarProyecto);

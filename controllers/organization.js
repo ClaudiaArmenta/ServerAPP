@@ -48,6 +48,17 @@ exports.postIniciarSesionOrg = (req,res)=>{
   })
 };
 
+exports.postNombreOrganizacion = (req,res)=>{
+  console.log(req.body);
+  Organization.findByPk(req.body.NameData.email)
+  .then(resultado=>{
+      res.send(resultado.name);
+  })
+  .catch(error=>{
+      console.log(error);
+      res.send(error);
+  })
+};
 
 exports.postOrganizacionesPorAceptar = (req,res)=>{
   console.log(req.body);

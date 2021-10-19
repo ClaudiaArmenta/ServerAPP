@@ -61,6 +61,18 @@ exports.postIniciarSesion = (req,res)=>{
   })
 };
 
+exports.postNombreUsuario = (req,res)=>{
+  console.log(req.body);
+  User.findByPk(req.body.NameData.email)
+  .then(resultado=>{
+    res.send(resultado.name);    
+  })
+  .catch(error=>{
+      console.log(error);
+      res.send(error);
+  })
+};
+
 
 exports.postValidarCorreo = (req,res)=>{
   console.log(req.body);
