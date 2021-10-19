@@ -173,12 +173,17 @@ function makeCode(length) {
 
 async function sendRecoveryEmail(code, address) {
 
+    let testAccount = await nodemailer.createTestAccount();
+
+    // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
-        service: 'gmail',
+        host: "smtp.ethereal.email",
+        port: 587,
+        secure: false, // true for 465, false for other ports
         auth: {
-            user: process.env.EMAIL || 'abc@gmail.com',
-            pass: process.env.PASSWORD || '1234'
-        }
+            user: testAccount.user, // generated ethereal user
+            pass: testAccount.pass, // generated ethereal password
+        },
     });
 
    let info = await transporter.sendMail({
@@ -192,12 +197,17 @@ async function sendRecoveryEmail(code, address) {
 
 async function sendContactEmail(address, name, surname) {
 
+    let testAccount = await nodemailer.createTestAccount();
+
+    // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
-        service: 'gmail',
+        host: "smtp.ethereal.email",
+        port: 587,
+        secure: false, // true for 465, false for other ports
         auth: {
-            user: process.env.EMAIL || 'abc@gmail.com',
-            pass: process.env.PASSWORD || '1234'
-        }
+            user: testAccount.user, // generated ethereal user
+            pass: testAccount.pass, // generated ethereal password
+        },
     });
 
     let info = await transporter.sendMail({
