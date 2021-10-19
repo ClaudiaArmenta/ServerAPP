@@ -65,7 +65,7 @@ exports.postNombreUsuario = (req,res)=>{
   console.log(req.body);
   User.findByPk(req.body.email)
   .then(resultado=>{
-    res.send(resultado.name);    
+    res.send(resultado.name);
   })
   .catch(error=>{
       console.log(error);
@@ -112,13 +112,8 @@ exports.forgotPassword = (req, res)=>{
     User.findByPk(req.body.email)
     .then(resultado=>{
       if(resultado){
-        User.update( { recoveryCode: codigo}, { where: {email: req.body.email } } )
-        .then(result =>
-          sendRecoveryEmail(codigo, req.body.email).then(res.send("YES"))
-        )
-        .catch(err =>
-          res.send("no se pudo")
-        )        
+        User.update({ recoveryCode: codigo}, { where: {email: req.body.email } } );
+        sendRecoveryEmail(codigo, req.body.email);
       }else{
         res.send('no se encontró al usuario');
       }
@@ -135,13 +130,9 @@ exports.recoverPassword = (req, res)=>{
       if(resultado){
           if (resultado.recoveryCode == req.body.codigo)
           {
-              User.update({ password: req.body.password}, { where: { email: req.body.email } })
-                .then(result =>
-                    res.send("YES")
-                )
-                .catch(err =>
-                    res.send(err)
-                )
+              User.update({ password: req.body.password}, { where: { email: req.body.email } });
+          }else{
+              res.send('el código ingresado es incorrecto');
           }
       }else{
         res.send('no se encontró al usuario');
@@ -184,7 +175,7 @@ async function sendRecoveryEmail(code, address) {
         subject: "Código de recuperación", // Subject line
         text: "Su código de recuperación es " + code + ".", // plain text body
         //html: "<b>Hello world?</b>", // html body
-    });    
+    });
 }
 
 async function sendEmail(address, name, surname) {
