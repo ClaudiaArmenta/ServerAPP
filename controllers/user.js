@@ -114,7 +114,7 @@ exports.forgotPassword = (req, res)=>{
       if(resultado){
         User.update({ recoveryCode: codigo}, { where: {email: req.body.email } } )
           .then(result =>
-            sendRecoveryEmail(codigo, req.body.email))
+            sendRecoveryEmail(codigo, req.body.email).then(res.send("YES")))
           .catch(err =>
             res.send("no se pudo"))
       }else{
