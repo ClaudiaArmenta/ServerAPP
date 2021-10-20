@@ -186,13 +186,17 @@ async function sendRecoveryEmail(code, address) {
         },
     });
 
-   let info = await transporter.sendMail({
+    let info = await transporter.sendMail({
         from: transporter.auth.user, // sender address
         to: address, // list of receivers
         subject: "Código de recuperación.", // Subject line
         text: "Su código de recuperación es:\n\n" + code, // plain text body
         //html: "<b>Hello world?</b>", // html body
     });
+
+    console.log("Message sent: %s", info.messageId);
+
+    console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
 }
 
 async function sendContactEmail(address, name, surname) {
@@ -217,4 +221,8 @@ async function sendContactEmail(address, name, surname) {
         text: "Gracias por querer ser parte de nuestro proyecto, " + name + " " + surname + ".\nTe contactaremos con esta dirección de correo electrónico.", // plain text body
         //html: "<b>Hello world?</b>", // html body
     });
+
+    console.log("Message sent: %s", info.messageId);
+
+    console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
 }
