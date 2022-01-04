@@ -12,6 +12,7 @@
   <a><img src="https://www.dibujando.org.mx/wp-content/uploads/2015/12/Logo-Fundacion.png" alt="Logo" width="140" height="170"/></a>
 
   <h3 align="center">Dibujando un Mañana App (Back end)</h3>
+  <h5 align="center">Click <a href= "https://github.com/SarahiArmenta/ServerAPP">here</a> to see the Front End of the App</h4>
 
 </div>
 
@@ -63,6 +64,8 @@ As part of Integration of Computer Security in Networks and Software Systems sub
 * [Bootstrap](https://getbootstrap.com)
 * [JQuery](https://jquery.com)-->
 
+* JavaScript
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
@@ -74,13 +77,24 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-<!--This is an example of how to list things you need to use the software and how to install them.
 * npm
-  ```sh
-  npm install npm@latest -g
-  ```
--->
+
+
 ### Installation
+
+1. Create a database named: `ServerApp` with password: `util/database.js`
+2. Clone the repository
+   ```sh
+   git clone https://github.com/SarahiArmenta/ServerAPP
+   ```
+3. Install Dependencies
+   ```sh
+   npm install
+   ```
+4. Execute
+   ```js
+   node index.js
+   ```
 <!--
 1. Get a free API Key at [https://example.com](https://example.com)
 2. Clone the repo
@@ -159,39 +173,4 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 
 
-
-
-<!-- ABOUT THE PROJECT -->
-# Datos Generales
-
-Servidor sobre la aplicación Dibujando un Mañana, que se puede encontrar también en un repositorio [aquí](https://github.com/Maikindustries/AppDibujandoUnManana)
-# Autores
-
-
-<!-- GETTING STARTED -->
-# Instalación
-
-## Pre-requisitos
-
-* npm
-* Una base de datos en SQL Server con el nombre de ServerApp y con las contraseñas encontradas en `util/database.js`
-
-## Ejecución 
-
-1. Clone el repositorio
-   ```sh
-   git clone https://github.com/SarahiArmenta/ServerAPP
-   ```
-3. Instale las dependencias npm
-   ```sh
-   npm install
-   ```
-4. Ejecute 
-   ```js
-   node index.js
-   ```
-
-
-
-
-Based on : https://github.com/othneildrew/Best-README-Template/blob/master/BLANK_README.md
+ReadMe template based on : <a href = "https://github.com/othneildrew/Best-README-Template/blob/master/BLANK_README.md">Link</a>
