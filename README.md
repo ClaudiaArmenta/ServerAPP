@@ -47,24 +47,20 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 <!--Add a real image of the project-->
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+<p align="center">
+  <img src="https://github.com/SarahiArmenta/ServerAPP/blob/main/Dibujando_Video.gif" alt="animated" />
+</p>
 
-As part of Integration of Computer Security in Networks and Software Systems subject at Tecnológico de Monterrey, we had to develop an app for Dibujando un Mañana.
+<p>As part of Integration of Computer Security in Networks and Software Systems subject at Tecnológico de Monterrey, we had to develop a donation app for <a href="https://www.dibujando.org.mx/">Dibujando un Mañana</a>. A non Governmental Organization with the purpose of changing lifes by increasing the general social investment</p>
+<p>The system consists in an Android application with support for Admin, organization and general users</p>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ### Built With
 
-<!--* [Next.js](https://nextjs.org/)
-* [React.js](https://reactjs.org/)
-* [Vue.js](https://vuejs.org/)
-* [Angular](https://angular.io/)
-* [Svelte](https://svelte.dev/)
-* [Laravel](https://laravel.com)
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)-->
-
-* JavaScript
+Software Tools:
+* [AndroidStudio](https://developer.android.com/studio) and Kotlin
+* [SQL Server Management Studio](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -111,12 +107,6 @@ To get a local copy up and running follow these simple example steps.
    ```
 -->
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- USAGE EXAMPLES -->
-
-
 
 <!-- LICENSE -->
 ## License
