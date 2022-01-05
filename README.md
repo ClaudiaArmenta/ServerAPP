@@ -128,12 +128,12 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-* Miguel Ángel Pérez López   		 
-* Ariadna Huesca Coronado - A01749161@tec.mx <a href="https://linkedin.com/in/ariadna-huesca-coronado" target="blank"><img align="center" src="https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555" alt="ariadna-huesca-coronado" height="28" width="110" /></a>
-* Octavio Andrick Sánchez Perusquia
-* Javier Emilio Moreno Márquez
-* Rubén Sánchez Mayén
-* Claudia Sarahi Armenta Maya
+Miguel Ángel Pérez López - mikeperezlopez15@hotmail.com <a href="https://www.linkedin.com/in/migue-perez-mikeindustries" target="blank"><img align="right" src="https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555" alt="Migue-perez-mikeindustries" height="28" width="110"/></a><hr/>
+Ariadna Huesca Coronado - A01749161@tec.mx <a href="https://linkedin.com/in/ariadna-huesca-coronado" target="blank"><img align="right" src="https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555" alt="ariadna-huesca-coronado" height="28" width="110" /></a><hr/>
+Octavio Andrick Sánchez Perusquia - A01378649@tec.mx <a href="https://tinyurl.com/yxt7eyqr" target="blank"><img align="right" src="https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555" height="28" width="110" /></a><hr/>
+Javier Emilio Moreno Márquez - A01750400@tec.mx<hr/>
+Rubén Sánchez Mayén - A01378379@tec.mx<hr/>
+Claudia Sarahi Armenta Maya -armentasarahi5@gmail.com <a href="https://www.linkedin.com/in/sarahi-armenta" target="blank"><img align="right" src="https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555" height="28" width="110" /></a><hr/><br>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
